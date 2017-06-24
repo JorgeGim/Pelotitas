@@ -6,7 +6,6 @@ import entorno.Entorno;
 
 public class Barra 
 {
-	// Variables de instancia
 	private int x, y;
 	private int ancho;
 	private int alto;
@@ -32,7 +31,6 @@ public class Barra
 	public void dibujarse(Entorno entorno) 
 	{
 		entorno.dibujarRectangulo(this.x, this.y, this.ancho, this.alto, 0, Color.yellow);
-		
 	}
 
 	public int getX() 
@@ -55,13 +53,4 @@ public class Barra
 	{
 		return this.y;
 	}
-
-	
-	
-	
-	
-	
-	
-	
-	
 }

@@ -8,8 +8,6 @@ import entorno.*;
 public class Juego extends InterfaceJuego
 {
 	private Entorno entorno;
-
-	//Pelotita pelotita;
 	Pelotita[] pelotita;
 	Barra barra;
 	private int atrapadas;
@@ -17,7 +15,6 @@ public class Juego extends InterfaceJuego
 
 	Juego()
 	{
-		// Inicializa el objeto entorno, pero aun no lo inicia.
 		entorno = new Entorno(this, "Pelotitas - Versión 0.01", 800, 600);
 		
 		barra = new Barra(100, entorno.alto()-70);
@@ -28,25 +25,11 @@ public class Juego extends InterfaceJuego
 		
 		atrapadas = 0;
 
-		
-		
-		/* 
-		 * Es fundamental que recién al final del constructor de la clase Juego se 
-		 * inicie el objeto entorno de la siguiente manera.
-		 */
 		entorno.iniciar();
 	}
 
-	/*
-	 * Durante el juego, el método tick() será ejecutado en cada instante y 
-	 * por lo tanto es el método más importante de esta clase. Aquí se debe 
-	 * actualizar el estado interno del juego para simular el paso del tiempo 
-	 * (ver el enunciado del TP para mayor detalle).
-	 */
 	public void tick()
 	{
-		
-		// Muestro cosas por pantalla
 		for (int i=0;i<pelotita.length;i++)
 		{
 			if (!pelotita[i].getAtrapada())
@@ -63,7 +46,6 @@ public class Juego extends InterfaceJuego
 		entorno.escribirTexto("p.x: " + pelotita[0].getX(), 20, 80);
 		entorno.escribirTexto("p.y: " + pelotita[0].getY(), 20, 100);
 
-		// Muevo las pelotitas
 		if (!entorno.estaPresionada('P'))
 		{
 			for (int i=0;i<pelotita.length;i++)
@@ -74,15 +56,12 @@ public class Juego extends InterfaceJuego
 				}
 			}
 		}
-	
-		// Veo si se mueve la barra		
+		
 		if (entorno.estaPresionada(entorno.TECLA_IZQUIERDA) && barra.getX() > 5)
 			barra.moverIzquierda();
 		if (entorno.estaPresionada(entorno.TECLA_DERECHA) && barra.getX() < entorno.ancho() - 5)
 			barra.moverDerecha();
 		
-		
-		// Veo si hay colisiones
 		for (int i = 0; i < pelotita.length; i++) 
 		{
 			if (!pelotita[i].getAtrapada())
